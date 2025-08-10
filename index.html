@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>&#119820;&#119825; &#119816;&#119826; &#119809;&#119825;&#119808;&#119821;&#119811;'&#119826; &#119821;&#119812;&#119827;&#119830;&#119822;&#119825;&#119818;</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      overflow: hidden;
+      height: 100%;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    .center-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      text-align: center;
+    }
+
+    h1 {
+      color: #00ffcc;
+      font-size: 32px;
+      margin-bottom: 30px;
+      text-shadow: 0 0 10px #00ffcc;
+    }
+
+    .button {
+      display: block;
+      margin: 10px auto;
+      padding: 15px 30px;
+      color: #00ffcc;
+      background: transparent;
+      border: 2px solid #00ffcc;
+      border-radius: 5px;
+      font-size: 16px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      text-shadow: 0 0 5px #00ffcc;
+      box-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc inset;
+    }
+
+    .button:hover {
+      background: #00ffcc;
+      color: black;
+      box-shadow: 0 0 20px #00ffcc, 0 0 40px #00ffcc inset;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="matrixCanvas"></canvas>
+
+  <div class="center-content">
+    <h1>&#119832;&#119822;&#119828; &#119808;&#119825;&#119812; &#119816;&#119821; &#119820;&#119825; &#119816;&#119826; &#119809;&#119825;&#119808;&#119821;&#119811;'&#119826; &#119821;&#119812;&#119827;&#119830;&#119822;&#119825;&#119818;</h1>
+    <a class="button" href="https://chat.whatsapp.com/B7npygtAnImCEKYhFLpNcW" target="_blank">&#119822;&#119813;&#119813;&#119816;&#119810;&#119816;&#119808;&#119819; &#119814;&#119825;&#119822;&#119828;&#119823;</a>
+    <a class="button" href="https://Wa.me/+923119250024?text=%E2%94%BE%F0%9D%90%87%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A5%F0%9D%90%A8%E2%8F%A4%CD%9F%CD%9F%CD%9E%CD%9E%F0%9D%90%8C%F0%9D%90%91%F0%9D%90%88%F0%9D%90%92%F0%9D%90%81%F0%9D%90%91%F0%9D%90%80%F0%9D%90%8D%F0%9D%90%83%E0%BD%80%CD%A1%CD%9C" target="_blank">&#119820;&#119825; &#119816;&#119826; &#119809;&#119825;&#119808;&#119821;&#119811; &#119822;&#119821; &#119830;&#119808;&#119827;&#119826;&#119808;&#119823;&#119823;</a>
+    <a class="button" href="https://t.me/MRISBRAND12" target="_blank">&#119820;&#119825; &#119816;&#119826; &#119809;&#119825;&#119808;&#119821;&#119811; &#119822;&#119821; &#119827;&#119812;&#119819;&#119812;&#119814;&#119825;&#119808;&#119820;</a>
+  </div>
+  <script>
+    const canvas = document.getElementById("matrixCanvas");
+    const ctx = canvas.getContext("2d");
+
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
+    const fontSize = 16;
+    const columns = Math.floor(canvas.width / fontSize);
+    const drops = Array(columns).fill(1);
+
+    function drawMatrix() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#00ffcc";
+      ctx.font = fontSize + "px monospace";
+
+      for (let i = 0; i < drops.length; i++) {
+        const char = characters.charAt(Math.floor(Math.random() * characters.length));
+        ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+
+        drops[i]++;
+      }
+    }
+
+    setInterval(drawMatrix, 35);
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+</body>
+</html>
